@@ -3,6 +3,7 @@ require 'pry'
 
 data = File.read("data/02.txt").lines.map(&:strip)
 
+# part one
 doubles = 0
 triples = 0
 
@@ -25,3 +26,25 @@ data.each do |datum|
 end
 
 puts doubles * triples
+
+# part two
+data.each do |datum1|
+  datum1 = datum1.split('')
+
+  data.each do |datum2|
+    uncommon = 0
+    datum2 = datum2.split('')
+     
+    i = 0
+    while i < 26 do
+      if datum1[i] != datum2[i]
+        uncommon += 1
+      end
+      i += 1
+    end
+
+    if uncommon == 1
+      puts datum1.join
+    end
+  end
+end
